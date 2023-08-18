@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is an example API created with [Pigeon Framework](https://github.com/luisbazdev/pigeon-framework).
+This is an example API created with [Pigeon Framework](https://github.com/luisbazdev/pigeon-framework) that uses MySQL database.
 
 The API has the following endpoints available:
 
