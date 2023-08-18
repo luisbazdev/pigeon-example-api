@@ -7,7 +7,7 @@ This is an example API created with [Pigeon Framework](https://github.com/luisba
 The API has the following endpoints available:
 
 * `GET /api/tasks` - Retrieve all Tasks
-* `GET /api/:taskId` - Retrieve Task with id `taskId`
+* `GET /api/tasks/:taskId` - Retrieve Task with id `taskId`
 * `POST /api/tasks` - Creates a new Task
 * `PUT /api/tasks/:taskId` - Updates Task with id `taskId`
 * `DELETE /api/tasks/:taskId` - Deletes a Task with id `taskId`
