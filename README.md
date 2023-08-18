@@ -47,5 +47,6 @@ Which you can then use to access the protected routes previously mentioned by se
 
 1. Clone this repository `git clone https://github.com/luisbazdev/pigeon-example-api`
 2. Run `npm install` followed by `npm run migrate`
-3. Start your API by running `npm run start`
-4. Try the API!
+3. (Optional) This API uses a MySQL database user `pigeon` with password `pigeon`, you can change it in `pigeon.db.mysql.url` variable in `.env` file!
+4. Start your API by running `npm run start`
+5. Try the API!
