@@ -36,7 +36,12 @@ Send a `POST` request to `/api/auth/login-route` where `login-route` is the valu
 }
 ```
 
-Which you can then use to access the protected routes previously mentioned by sending the token in the `Authorization` header in the following way: `Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVpcyBBbGVqYW5kcm8iLCJlbWFpbCI6Imx1aXMyQGdtYWlsLmNvbSIsInJvbGVzIjpbInVzZXIiXSwiaWQiOjEsImlhdCI6MTY5MjM5NjIxNywiZXhwIjoxNjkyMzk5ODE3fQ.wZalR3MHi74wVRj88JUd0M-4nWjFSRMnTcOutoyby98`
+Which you can then use to access the protected routes previously mentioned by sending the token in the `Authorization` header in the following way: 
+```json
+{
+  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVpcyBBbGVqYW5kcm8iLCJlbWFpbCI6Imx1aXMyQGdtYWlsLmNvbSIsInJvbGVzIjpbInVzZXIiXSwiaWQiOjEsI  mlhdCI6MTY5MjM5NjIxNywiZXhwIjoxNjkyMzk5ODE3fQ.wZalR3MHi74wVRj88JUd0M-4nWjFSRMnTcOutoyby98"
+}
+```
 
 ## How to run
 
