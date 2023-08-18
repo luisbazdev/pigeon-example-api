@@ -1,0 +1,98 @@
+import { IRepository } from "pigeon-core";
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+/**
+ * Repository for {{capitalize name}} objects.
+ * @type {IRepository}
+ *
+ * Please check https://github.com/luisbazdev/pigeon-framework 
+ * for more understanding :)
+ */
+export const {{capitalize name}}Repository: IRepository = {
+  /**
+   * Creates a new {{name}}.
+   * @param {any} {{capitalize name}} - The {{name}} data.
+   */
+  create: async function({{capitalize name}}: any) {
+    try {
+      const result = await prisma.{{name}}.create({
+        data: {{capitalize name}}
+      });
+      return result;
+    } catch (error) {
+      throw error;  
+    } finally{
+      await prisma.$disconnect();
+    }
+  },
+  /**
+   * Finds a {{name}} by its ID.
+   * @param {number} id - The {{name}} ID.
+   */
+  findById: async function(id: number) {
+    try {
+      const result = await prisma.{{name}}.findUnique({
+        where: {
+          id,
+        },
+      });
+      return result
+    } catch (error) {
+      throw error;  
+    } finally{
+      await prisma.$disconnect();
+    }
+  },
+  /**
+   * Finds all {{name}}s.
+   */
+  findAll: async function () {
+    try {
+      const result = await prisma.{{name}}.findMany();
+      return result
+    } catch (error) {
+      throw error;  
+    } finally{
+      await prisma.$disconnect();
+    }
+  },
+  /**
+   * Updates a {{name}} by its ID.
+   * @param {number} id - The {{name}} ID.
+   * @param {any} {{capitalize name}} - The updated {{name}} data.
+   */
+  update: async function(id: number, {{capitalize name}}: any) {
+    try {
+      const {{name}} = await prisma.{{name}}.update({
+        data: {{capitalize name}},
+        where: {
+          id,
+        },
+      })
+      return {{name}};
+    } catch (error) {
+      throw error;  
+    } finally{
+      await prisma.$disconnect();
+    }
+  },
+  /**
+   * Deletes a {{name}} by its ID.
+   * @param {number} id - The {{name}} ID.
+   */
+  delete: async function(id: number) {
+    try {
+      const {{name}} = await prisma.{{name}}.delete({
+        where: {
+          id,
+        },
+      })
+      return {{name}};
+    } catch (error) {
+      throw error;  
+    } finally{
+      await prisma.$disconnect();
+    }
+  },
+};
