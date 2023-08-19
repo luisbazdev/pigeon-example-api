@@ -14,8 +14,12 @@ const taskHandler: IPigeonHandler = Pigeon.createHandler("/tasks");
  * @param {ServerResponse} response - The server response object.
  */
 taskHandler.GET("/", async (request: IncomingMessage, response: ServerResponse) => {
-  const tasks = await TaskRepository.findAll();
-  response.status(200).json({tasks})
+  try {
+    const tasks = await TaskRepository.findAll();
+    response.status(200).json({tasks})
+  } catch (error) {
+    response.status(500).json({error: "An unexpected error occurred"});
+  }
 });
 
 /**
@@ -24,9 +28,13 @@ taskHandler.GET("/", async (request: IncomingMessage, response: ServerResponse) 
  * @param {ServerResponse} response - The server response object.
  */
 taskHandler.GET("/:taskId", async (request: IncomingMessage, response: ServerResponse) => {
-  const { taskId } = request.params;
-  const task = await TaskRepository.findById(parseInt(taskId));
-  response.status(200).json({task})
+  try {
+    const { taskId } = request.params;
+    const task = await TaskRepository.findById(parseInt(taskId));
+    response.status(200).json({task});
+  } catch (error) {
+    response.status(500).json({error: "An unexpected error occurred"});
+  }
 });
 
 /**
@@ -35,12 +43,16 @@ taskHandler.GET("/:taskId", async (request: IncomingMessage, response: ServerRes
  * @param {ServerResponse} response - The server response object.
  */
 taskHandler.POST("/", async (request: IncomingMessage, response: ServerResponse) => {
-  const { text } = request.body;
-  const task = await TaskRepository.create({text})
-  response.status(200).json({
-    message: "Task successfully created.",
-    task
-  })
+  try {
+    const { text } = request.body;
+    const task = await TaskRepository.create({text})
+    response.status(200).json({
+      message: "Task successfully created.",
+      task
+    })
+  } catch (error) {
+    response.status(500).json({error: "An unexpected error occurred"});
+  }
 }, [JWTAuthentication]);
 
 /**
@@ -49,13 +61,17 @@ taskHandler.POST("/", async (request: IncomingMessage, response: ServerResponse)
  * @param {ServerResponse} response - The server response object.
  */
 taskHandler.PUT("/:taskId", async (request: IncomingMessage, response: ServerResponse) => {
-  const { taskId } = request.params;
-  const { text } = request.body;
-  const task = await TaskRepository.update(parseInt(taskId), {text});
-  response.status(200).json({
-    message: "Task successfully updated.",
-    task
-  })
+  try {
+    const { taskId } = request.params;
+    const { text } = request.body;
+    const task = await TaskRepository.update(parseInt(taskId), {text});
+    response.status(200).json({
+      message: "Task successfully updated.",
+      task
+    })
+  } catch (error) {
+    response.status(500).json({error: "An unexpected error occurred"});
+  }
 }, [JWTAuthentication]);
 
 /**
@@ -64,11 +80,15 @@ taskHandler.PUT("/:taskId", async (request: IncomingMessage, response: ServerRes
  * @param {ServerResponse} response - The server response object.
  */
 taskHandler.DELETE("/:taskId", async (request: IncomingMessage, response: ServerResponse) => {
-  const { taskId } = request.params;
-  const task = await TaskRepository.delete(parseInt(taskId));
-  response.status(200).json({
-    message: "Task successfully deleted.",
-    task
-  })
+  try {
+    const { taskId } = request.params;
+    const task = await TaskRepository.delete(parseInt(taskId));
+    response.status(200).json({
+      message: "Task successfully deleted.",
+      task
+    })
+  } catch (error) {
+    response.status(500).json({error: "An unexpected error occurred"});
+  }
 }, [JWTAuthentication]);
 
