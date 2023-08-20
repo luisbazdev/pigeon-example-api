@@ -8,8 +8,8 @@ The API has the following endpoints available:
 
 * `GET /api/tasks` - Retrieve all Tasks
 * `GET /api/tasks/:taskId` - Retrieve Task with id `taskId`
-* `POST /api/tasks` - Creates a new Task
-* `PUT /api/tasks/:taskId` - Updates Task with id `taskId`
+* `POST /api/tasks` - Creates a new Task with content of `text` field sent in request body
+* `PUT /api/tasks/:taskId` - Updates content of Task with id `taskId` with `text` field sent in request body
 * `DELETE /api/tasks/:taskId` - Deletes a Task with id `taskId`
 
 The `task` handler uses Pigeon `JWTAuthentication` middleware (see [Pigeon docs](https://github.com/luisbazdev/pigeon-framework#authentication)) in all routes except the first two, which are public (do not need a JWT token to be sent from the client).
